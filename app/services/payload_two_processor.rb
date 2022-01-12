@@ -1,18 +1,20 @@
 class PayloadTwoProcessor < ApplicationService
   attr_accessor :params
+  attr_reader :reservation
 
   def initialize(params:)
     @params = params || missing_attribute(:params)
+    @reservation = params[:reservation]
   end
 
   def call
     BookReservation.call(
-      params: reservation_details
+      reservation_params: reservation_params,
+      guest_params: guest_params
     )
   end
 
-  def reservation_details
-    reservation = params[:reservation]
+  def reservation_params
     {
       code: reservation[:code],
       start_date: reservation[:start_date]&.to_date,
@@ -27,6 +29,11 @@ class PayloadTwoProcessor < ApplicationService
       payout_price: reservation[:expected_payout_amount]&.to_f,
       security_price: reservation[:listing_security_price_accurate]&.to_f,
       total_price: reservation[:total_paid_amount_accurate]&.to_f,
+    }
+  end
+
+  def guest_params
+    {
       guest_email: reservation[:guest_email],
       guest_first_name: reservation[:guest_first_name],
       guest_last_name: reservation[:guest_last_name],

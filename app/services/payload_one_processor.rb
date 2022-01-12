@@ -7,13 +7,14 @@ class PayloadOneProcessor < ApplicationService
 
   def call
     BookReservation.call(
-      params: reservation_details
+      reservation_params: reservation_params,
+      guest_params: guest_params
     )
   end
 
   private
 
-  def reservation_details
+  def reservation_params
     {
       code: params[:reservation_code],
       start_date: params[:start_date]&.to_date,
@@ -28,6 +29,11 @@ class PayloadOneProcessor < ApplicationService
       payout_price: params[:payout_price]&.to_f,
       security_price: params[:security_price]&.to_f,
       total_price: params[:total_price]&.to_f,
+    }
+  end
+
+  def guest_params
+    {
       guest_email: params.dig(:guest, :email),
       guest_first_name: params.dig(:guest, :first_name),
       guest_last_name: params.dig(:guest, :last_name),
