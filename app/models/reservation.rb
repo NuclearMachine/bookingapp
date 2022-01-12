@@ -17,13 +17,6 @@ class Reservation < ApplicationRecord
     :security_price,
     :total_price
 
-  validates :start_date, presence: true
-  validates :status, presence: true
-  validates :currency, presence: true
-  validates :payout_price, presence: true
-  validates :security_price, presence: true
-  validates :total_price, presence: true
-
   [:nights, :guests, :adults, :children, :infants].each do |reservation_attr|
     validates reservation_attr,
       presence: true,
