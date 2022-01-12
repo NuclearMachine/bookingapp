@@ -13,20 +13,13 @@ class BookReservation < ApplicationService
     if reservation.present?
       reservation.update!(reservation_params.compact_blank)
     else
-      guest = find_or_create_guest(guest_params)
-      assign_phone_numbers(guest, guest_params[:guest_phone_numbers])
+      guest = Guest.find_or_create_by!(guest_params[:guest])
+      assign_phone_numbers(guest, guest_params[:phone_numbers])
       guest.reservations.create!(reservation_params)
     end
   end
 
   private
-
-  def find_or_create_guest(params)
-    Guest.find_or_create_by!(email: params[:guest_email]) do |g|
-      g.first_name = params[:guest_first_name]
-      g.last_name = params[:guest_last_name]
-    end
-  end
 
   def assign_phone_numbers(guest, phone_numbers)
     phone_numbers.each do |number|

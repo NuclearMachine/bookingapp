@@ -34,10 +34,12 @@ class PayloadOneProcessor < ApplicationService
 
   def guest_params
     {
-      guest_email: params.dig(:guest, :email),
-      guest_first_name: params.dig(:guest, :first_name),
-      guest_last_name: params.dig(:guest, :last_name),
-      guest_phone_numbers: [params.dig(:guest, :phone)]
+      guest: {
+        email: params.dig(:guest, :email),
+        first_name: params.dig(:guest, :first_name),
+        last_name: params.dig(:guest, :last_name),
+      },
+      phone_numbers: [params.dig(:guest, :phone)]
     }
   end
 end

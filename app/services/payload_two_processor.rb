@@ -34,10 +34,12 @@ class PayloadTwoProcessor < ApplicationService
 
   def guest_params
     {
-      guest_email: reservation[:guest_email],
-      guest_first_name: reservation[:guest_first_name],
-      guest_last_name: reservation[:guest_last_name],
-      guest_phone_numbers: reservation[:guest_phone_numbers]
+      guest: {
+        email: reservation[:guest_email],
+        first_name: reservation[:guest_first_name],
+        last_name: reservation[:guest_last_name]
+      },
+      phone_numbers: reservation[:guest_phone_numbers]
     }
   end
 end
