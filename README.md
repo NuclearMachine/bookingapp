@@ -28,7 +28,9 @@ rails s
 Notes for the reviewer
 ----------------------
 
-The API endpoint is in `/reservations`
+The API endpoint is in `/reservations`.
+
+Logic is separated via PORO service objects in `app/services`.
 
 You should be able to create and update reservations.
 
