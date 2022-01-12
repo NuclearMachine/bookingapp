@@ -6,7 +6,11 @@ Getting Started
 ----------------------
 ##### Make sure you have Ruby 3.1.0
 
-##### Do a `bundle install`.
+##### Bundle the Gemfile
+
+```shell
+bundle install
+```
 
 ##### Create and build the database.
 
@@ -24,8 +28,10 @@ rails s
 Notes for the reviewer
 ----------------------
 
-API endpoint is in '/reservations'.
+The API endpoint is in `/reservations`
 
-Should be able to create and update reservations.
+You should be able to create and update reservations.
 
 Guest email, name and phone numbers cannot be updated due to instruction 5.
+
+When updating a reservation, always append the reservation code.
