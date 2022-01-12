@@ -35,3 +35,9 @@ You should be able to create and update reservations.
 Guest email, name and phone numbers cannot be updated due to instruction 5.
 
 When updating a reservation, always append the reservation code.
+
+To check if unit tests pass, do
+
+```shell
+rspec
+```
