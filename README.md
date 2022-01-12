@@ -1,24 +1,31 @@
-# README
+# Booking App API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project was created for Hometime's skill assessment.
 
-Things you may want to cover:
+Getting Started
+----------------------
+##### Make sure you have Ruby 3.1.0
 
-* Ruby version
+##### Do a `bundle install`.
 
-* System dependencies
+##### Create and build the database.
 
-* Configuration
+```shell
+rails db:create
+rails db:migrate
+```
 
-* Database creation
+#### Start the server!
 
-* Database initialization
+```shell
+rails s
+```
 
-* How to run the test suite
+Notes for the reviewer
+----------------------
 
-* Services (job queues, cache servers, search engines, etc.)
+API endpoint is in '/reservations'.
 
-* Deployment instructions
+Should be able to create and update reservations.
 
-* ...
+Guest email, name and phone numbers cannot be updated due to instruction 5.
